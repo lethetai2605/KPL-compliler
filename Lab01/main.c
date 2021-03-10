@@ -118,7 +118,7 @@ void inserttree(char *token, int linenumber, bst *root)
     if (a != NULL)
     {
         char *str = (char *)malloc(sizeof(char) * 20);
-        sprintf(str, ", %d", linenumber);
+        sprintf(str, " %d", linenumber);
         strcat((a->data).line, str);
         a->data.count++;
         free(str);
@@ -215,7 +215,7 @@ void displaytree(bst root)
     if (root != NULL)
     {
         displaytree(root->left);
-        printf("\n%-20s%-2i%s", (root->data).word, (root->data).count, (root->data).line);
+        printf("\n%-10s%2i%s", (root->data).word, (root->data).count, (root->data).line);
         displaytree(root->right);
     }
 }
