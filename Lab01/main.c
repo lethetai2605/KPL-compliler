@@ -111,6 +111,29 @@ int checkstopw(char **liststopw, int numstopword, char *word)
     }
     return 0;
 }
+void inserttree(char *token, int linenumber, bst *root)
+{
+    token = tolowerstr(token);
+    bst a = searchnode(*root, token);
+    if (a != NULL)
+    {
+        char *str = (char *)malloc(sizeof(char) * 20);
+        sprintf(str, ", %d", linenumber);
+        strcat((a->data).line, str);
+        a->data.count++;
+        free(str);
+    }
+    else
+    {
+        Data x;
+        x.word = (char *)malloc(sizeof(char) * 50);
+        x.line = (char *)malloc(sizeof(char) * 10000);
+        x.count = 1;
+        strcpy(x.word, token);
+        sprintf(x.line, ", %d", linenumber);
+        insertnode(root, x);
+    }
+}
 void readtxt(char *filename, char **liststopw, int numstopword, bst *root)
 {
     FILE *fp = fopen(filename, "r");
@@ -159,29 +182,7 @@ void readtxt(char *filename, char **liststopw, int numstopword, bst *root)
     free(token);
     free(textline);
 }
-void inserttree(char *token, int linenumber, bst *root)
-{
-    token = tolowerstr(token);
-    bst a = searchnode(*root, token);
-    if (a != NULL)
-    {
-        char *str = (char *)malloc(sizeof(char) * 20);
-        sprintf(str, ", %d", linenumber);
-        strcat((a->data).line, str);
-        a->data.count++;
-        free(str);
-    }
-    else
-    {
-        Data x;
-        x.word = (char *)malloc(sizeof(char) * 50);
-        x.line = (char *)malloc(sizeof(char) * 10000);
-        x.count = 1;
-        strcpy(x.word, token);
-        sprintf(x.line, ", %d", linenumber);
-        insertnode(root, x);
-    }
-}
+
 
 char **getliststopw(char *filename, int *numstopw)
 {
