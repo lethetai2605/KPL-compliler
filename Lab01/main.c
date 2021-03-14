@@ -130,7 +130,7 @@ void inserttree(char *token, int linenumber, bst *root)
         x.line = (char *)malloc(sizeof(char) * 10000);
         x.count = 1;
         strcpy(x.word, token);
-        sprintf(x.line, ", %d", linenumber);
+        sprintf(x.line, "  %d", linenumber);
         insertnode(root, x);
     }
 }
@@ -224,7 +224,7 @@ int main(int argc, char const *argv[])
     bst root = NULL;
     int *numStopWord = (int *)malloc(sizeof(int));
     char **liststopw = getliststopw("completed/stopw.txt", numStopWord);
-    readtxt("completed/vanban.txt", liststopw, *numStopWord, &root);
+    readtxt("completed/alice30.txt", liststopw, *numStopWord, &root);
     displaytree(root);
     free(numStopWord);
     free(root);
