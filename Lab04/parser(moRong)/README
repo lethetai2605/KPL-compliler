@@ -1,0 +1,4 @@
+- Thêm kiểu string
+- Thêm phép toán lấy phần dư % 
+- Thêm cấu trúc
+        DO  <statement> WHILE <condition > ;

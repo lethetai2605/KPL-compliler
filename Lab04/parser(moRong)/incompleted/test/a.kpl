@@ -1,0 +1,11 @@
+program a;
+const a = "abbbb";
+      b = 'd';
+      e = 111;
+begin
+  a := a/2 + b%2 - b%a;
+  a := "aaa";
+
+  do while a = 1 do a:=1 
+  while a = 1;
+end.
